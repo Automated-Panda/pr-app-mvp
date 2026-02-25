@@ -1,4 +1,5 @@
 import { create } from 'zustand'
+import { persist } from 'zustand/middleware'
 import type {
   User,
   Client,
@@ -36,7 +37,7 @@ interface AppState {
   globalActivity: ActivityEntry[]
 
   /* ---- auth ---- */
-  login: (role: Role) => void
+  login: (role: Role, email?: string) => void
   logout: () => void
 
   /* ---- task actions ---- */
@@ -60,6 +61,9 @@ interface AppState {
   addUser: (user: User) => void
   updateUser: (id: string, updates: Partial<User>) => void
   deleteUser: (id: string) => void
+
+  /* ---- reset ---- */
+  resetStore: () => void
 }
 
 /* ------------------------------------------------------------------ */
@@ -74,7 +78,8 @@ const initialGlobalActivity: ActivityEntry[] = seedTasks
 /*  Store                                                             */
 /* ------------------------------------------------------------------ */
 
-export const useStore = create<AppState>()((set, _get) => ({
+export const useStore = create<AppState>()(persist(
+  (set, _get) => ({
   /* ================================================================ */
   /*  State                                                           */
   /* ================================================================ */
@@ -90,9 +95,11 @@ export const useStore = create<AppState>()((set, _get) => ({
   /*  Auth                                                            */
   /* ================================================================ */
 
-  login: (role) =>
+  login: (role, email) =>
     set(() => {
-      const user = seedUsers.find((u) => u.role === role) ?? null
+      const user = email
+        ? seedUsers.find((u) => u.email === email) ?? seedUsers.find((u) => u.role === role) ?? null
+        : seedUsers.find((u) => u.role === role) ?? null
       return { currentUser: user }
     }),
 
@@ -300,4 +307,22 @@ export const useStore = create<AppState>()((set, _get) => ({
         globalActivity: [entry, ...state.globalActivity],
       }
     }),
-}))
+
+  /* ================================================================ */
+  /*  Reset                                                            */
+  /* ================================================================ */
+
+  resetStore: () =>
+    set(() => ({
+      currentUser: null,
+      clients: [...seedClients],
+      locations: [...seedLocations],
+      users: [...seedUsers],
+      tasks: [...seedTasks],
+      globalActivity: [...initialGlobalActivity],
+    })),
+}),
+  {
+    name: 'peach-reviews-storage',
+  }
+))
