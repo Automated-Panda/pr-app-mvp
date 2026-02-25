@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useStore } from '@/store/useStore'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { PenTool, AlertCircle } from 'lucide-react'
+import { AlertCircle } from 'lucide-react'
 import type { Role } from '@/data/types'
 
 const DEMO_ACCOUNTS: Record<string, { password: string; role: Role }> = {
@@ -46,9 +46,7 @@ export function LoginPage() {
       <div className="relative z-10 w-full max-w-xl animate-fade-in">
         {/* Logo */}
         <div className="flex items-center justify-center gap-4 mb-16">
-          <div className="w-12 h-12 rounded-xl bg-peach-500 flex items-center justify-center">
-            <PenTool size={24} className="text-white" />
-          </div>
+          <span className="text-4xl" role="img" aria-label="Peach">🍑</span>
           <span className="text-3xl font-bold text-dark-50">Peach Reviews</span>
         </div>
 

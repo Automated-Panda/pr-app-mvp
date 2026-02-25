@@ -4,7 +4,6 @@ import {
   LayoutDashboard,
   ListTodo,
   FileCheck,
-  PenTool,
   Send,
   Users,
   Building2,
@@ -72,9 +71,7 @@ export function Sidebar() {
       {/* Logo */}
       <div className="h-14 flex items-center px-4 border-b border-dark-700/50 shrink-0">
         <div className="flex items-center gap-2 overflow-hidden">
-          <div className="w-8 h-8 rounded-lg bg-peach-500 flex items-center justify-center shrink-0">
-            <PenTool size={16} className="text-white" />
-          </div>
+          <span className="text-xl shrink-0" role="img" aria-label="Peach">🍑</span>
           {!collapsed && (
             <span className="text-sm font-semibold text-dark-50 whitespace-nowrap">
               Peach Reviews
