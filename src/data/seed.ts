@@ -183,7 +183,7 @@ export const seedUsers: User[] = [
   {
     id: 'u1',
     name: 'Sarah Chen',
-    email: 'sarah.chen@peachreviews.com',
+    email: 'admin@peachreviews.com',
     role: 'admin',
     avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=SarahChen',
   },
@@ -191,7 +191,7 @@ export const seedUsers: User[] = [
   {
     id: 'u2',
     name: 'Marcus Thompson',
-    email: 'marcus.thompson@peachreviews.com',
+    email: 'writer@peachreviews.com',
     role: 'writer',
     avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=MarcusThompson',
     assignedLocationIds: ['loc1', 'loc2', 'loc4'],
@@ -240,7 +240,7 @@ export const seedUsers: User[] = [
   {
     id: 'u8',
     name: 'Dr. Alan Moore',
-    email: 'alan.moore@brightsmile.com',
+    email: 'provider@peachreviews.com',
     role: 'provider',
     avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=AlanMoore',
     clientIds: ['c1'],
