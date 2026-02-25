@@ -43,51 +43,51 @@ export function LoginPage() {
       {/* Subtle background orb */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-peach-500/[0.07] rounded-full blur-[120px] animate-float" />
 
-      <div className="relative z-10 w-full max-w-md animate-fade-in">
+      <div className="relative z-10 w-full max-w-xl animate-fade-in">
         {/* Logo */}
-        <div className="flex items-center justify-center gap-3 mb-12">
-          <div className="w-11 h-11 rounded-xl bg-peach-500 flex items-center justify-center">
-            <PenTool size={22} className="text-white" />
+        <div className="flex items-center justify-center gap-4 mb-16">
+          <div className="w-12 h-12 rounded-xl bg-peach-500 flex items-center justify-center">
+            <PenTool size={24} className="text-white" />
           </div>
-          <span className="text-2xl font-bold text-dark-50">Peach Reviews</span>
+          <span className="text-3xl font-bold text-dark-50">Peach Reviews</span>
         </div>
 
         {/* Card */}
-        <div className="bg-dark-900/80 border border-dark-700/50 rounded-2xl px-10 py-10 backdrop-blur-sm shadow-2xl">
-          <h1 className="text-xl font-semibold text-dark-50 mb-2">Sign in</h1>
-          <p className="text-dark-500 text-sm mb-8">Enter your credentials to continue</p>
+        <div className="bg-dark-900/80 border border-dark-700/50 rounded-2xl px-14 py-14 backdrop-blur-sm shadow-2xl">
+          <h1 className="text-2xl font-semibold text-dark-50 mb-3">Sign in</h1>
+          <p className="text-dark-500 text-base mb-10">Enter your credentials to continue</p>
 
-          <form onSubmit={handleLogin} className="space-y-6">
+          <form onSubmit={handleLogin} className="space-y-8">
             {error && (
-              <div className="flex items-center gap-2 p-3 rounded-lg bg-red-500/10 border border-red-500/20">
-                <AlertCircle size={14} className="text-red-400 shrink-0" />
+              <div className="flex items-center gap-2 p-4 rounded-lg bg-red-500/10 border border-red-500/20">
+                <AlertCircle size={16} className="text-red-400 shrink-0" />
                 <span className="text-sm text-red-400">{error}</span>
               </div>
             )}
 
             <div>
-              <label className="block text-xs font-medium text-dark-400 mb-2">Email</label>
+              <label className="block text-sm font-medium text-dark-400 mb-2.5">Email</label>
               <Input
                 type="email"
                 placeholder="you@peachreviews.com"
                 value={email}
                 onChange={e => setEmail(e.target.value)}
-                className="h-11"
+                className="h-12 text-base"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-dark-400 mb-2">Password</label>
+              <label className="block text-sm font-medium text-dark-400 mb-2.5">Password</label>
               <Input
                 type="password"
                 placeholder="Enter your password"
                 value={password}
                 onChange={e => setPassword(e.target.value)}
-                className="h-11"
+                className="h-12 text-base"
               />
             </div>
 
-            <Button type="submit" className="w-full h-11 text-sm font-semibold mt-2">
+            <Button type="submit" className="w-full h-12 text-base font-semibold mt-4">
               Sign In
             </Button>
           </form>
