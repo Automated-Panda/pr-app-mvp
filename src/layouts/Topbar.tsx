@@ -1,17 +1,26 @@
 import { useStore } from '@/store/useStore'
 import { useNavigate } from 'react-router-dom'
-import { Search, Bell, LogOut, User } from 'lucide-react'
+import { Search, Bell, LogOut, User, RotateCcw } from 'lucide-react'
 import { useState } from 'react'
+import { toast } from 'sonner'
 
 export function Topbar() {
   const currentUser = useStore(s => s.currentUser)
   const logout = useStore(s => s.logout)
+  const resetStore = useStore(s => s.resetStore)
   const navigate = useNavigate()
   const [showUserMenu, setShowUserMenu] = useState(false)
 
   const handleLogout = () => {
     logout()
     navigate('/login')
+  }
+
+  const handleReset = () => {
+    localStorage.removeItem('peach-reviews-storage')
+    resetStore()
+    setShowUserMenu(false)
+    toast.success('Demo data has been reset')
   }
 
   return (
@@ -58,6 +67,13 @@ export function Topbar() {
                   <p className="text-xs text-dark-400">Signed in as</p>
                   <p className="text-sm text-dark-100 font-medium truncate">{currentUser?.email}</p>
                 </div>
+                <button
+                  onClick={handleReset}
+                  className="w-full flex items-center gap-2 px-3 py-2 text-sm text-dark-300 hover:text-dark-100 hover:bg-dark-800 transition-colors"
+                >
+                  <RotateCcw size={14} />
+                  Reset demo data
+                </button>
                 <button
                   onClick={handleLogout}
                   className="w-full flex items-center gap-2 px-3 py-2 text-sm text-dark-300 hover:text-dark-100 hover:bg-dark-800 transition-colors"
